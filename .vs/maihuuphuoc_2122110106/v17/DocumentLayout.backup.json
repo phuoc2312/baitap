@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C##\\maihuuphuoc_2122110106\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\gamebaucua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\gamebaucua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 243,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Gamebaucua.cs",
+              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Gamebaucua.cs",
+              "RelativeDocumentMoniker": "baitap\\Gamebaucua.cs",
+              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Gamebaucua.cs",
+              "RelativeToolTip": "baitap\\Gamebaucua.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T05:38:05.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "game.cs",
+              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs",
+              "RelativeDocumentMoniker": "baitap\\game.cs",
+              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs",
+              "RelativeToolTip": "baitap\\game.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwJQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T17:11:57.087Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
