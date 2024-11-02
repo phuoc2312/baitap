@@ -61,11 +61,31 @@ namespace baitap.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] an {
+            get {
+                object obj = ResourceManager.GetObject("an", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bau {
             get {
                 object obj = ResourceManager.GetObject("bau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bom {
+            get {
+                object obj = ResourceManager.GetObject("bom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -111,6 +131,26 @@ namespace baitap.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] lum {
+            get {
+                object obj = ResourceManager.GetObject("lum", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap moi1 {
+            get {
+                object obj = ResourceManager.GetObject("moi1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap nai {
@@ -126,6 +166,26 @@ namespace baitap.Properties {
         internal static System.Drawing.Bitmap nen {
             get {
                 object obj = ResourceManager.GetObject("nen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] over {
+            get {
+                object obj = ResourceManager.GetObject("over", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ran {
+            get {
+                object obj = ResourceManager.GetObject("ran", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

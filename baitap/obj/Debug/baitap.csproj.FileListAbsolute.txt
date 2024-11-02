@@ -59,3 +59,5 @@ D:\C##\maihuuphuoc_2122110106\baitap\obj\Debug\baitap.Form14.resources
 D:\C##\maihuuphuoc_2122110106\baitap\obj\Debug\baitap.Gamebaucua.resources
 D:\C##\maihuuphuoc_2122110106\baitap\obj\Debug\baitap.login.resources
 D:\C##\maihuuphuoc_2122110106\baitap\obj\Debug\baitap.MinesweeperGame.resources
+D:\C##\maihuuphuoc_2122110106\baitap\obj\Debug\Interop.WMPLib.dll
+D:\C##\maihuuphuoc_2122110106\baitap\obj\Debug\baitap.csproj.ResolveComReference.cache

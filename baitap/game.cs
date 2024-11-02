@@ -2,108 +2,200 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
+using WMPLib; // Thư viện Windows Media Player
 
 namespace SnakeGame
 {
     public partial class game : Form
     {
-        private List<Point> snake = new List<Point>(); // Danh sách tọa độ của rắn
-        private Point food; // Tọa độ của mồi
-        private string direction = "right"; // Hướng di chuyển ban đầu của rắn
-        private int score = 0; // Điểm số
+        private List<Point> snake = new List<Point>();
+        private Point food;
+        private List<Point> obstacles = new List<Point>();
+        private string direction = "right";
+        private int score = 0;
+        private int level = 1;
+        private int timeRemaining = 15;
         private Timer gameTimer = new Timer();
-        private int cellSize = 20; // Kích thước mỗi ô (rắn, mồi)
+        private Timer countdownTimer = new Timer();
+        private Timer flashTimer = new Timer(); // Hẹn giờ cho hiệu ứng nhấp nháy ở cấp độ 3
+        private bool isDarkMode = false; // Chế độ nền tối
+        private int cellSize = 20;
+        private Random rand = new Random();
+        private WindowsMediaPlayer eatSound;
+        private WindowsMediaPlayer gameSound;
+        private Image snakeHeadImage;
+        private Image foodImage;
+        private Image obstacleImage;
 
         public game()
         {
             InitializeComponent();
             InitializeGame();
-            this.KeyDown += Form1_KeyDown; // Gán sự kiện KeyDown cho form
+            this.KeyDown += Form1_KeyDown;
+
+            eatSound = new WindowsMediaPlayer();
+            eatSound.URL = "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\an.mp3";
+            gameSound = new WindowsMediaPlayer();
+            gameSound.URL = "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\lum.mp3";
+
+            snakeHeadImage = Image.FromFile("D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\ran.png");
+            foodImage = Image.FromFile("D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\moi.png");
+            obstacleImage = Image.FromFile("D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\bom.png");
         }
 
-        // Khởi tạo game
         private void InitializeGame()
         {
-            gameTimer.Interval = 100; // Tốc độ của game (100ms)
+            gameTimer.Interval = 100;
             gameTimer.Tick += GameLoop;
+
+            countdownTimer.Interval = 1000;
+            countdownTimer.Tick += Countdown;
+
+            flashTimer.Interval = 500; // Nhấp nháy mỗi nửa giây cho cấp độ 3
+            flashTimer.Tick += ToggleFlash;
 
             StartGame();
         }
 
-        // Bắt đầu game
         private void StartGame()
         {
             snake.Clear();
-            snake.Add(new Point(10, 10)); // Khởi tạo vị trí ban đầu của rắn
-            GenerateFood(); // Tạo mồi
+            snake.Add(new Point(10, 10));
+            GenerateFood();
+            obstacles.Clear();
             score = 0;
+            level = 1;
+            timeRemaining = 15;
+
             direction = "right";
             gameTimer.Start();
+            countdownTimer.Start();
+            flashTimer.Stop(); // Đảm bảo nhấp nháy tắt ở cấp độ 1
+            gamePanel.BackColor = Color.White; // Đặt màu nền ban đầu
+            UpdateLabels();
         }
 
-        // Tạo mồi ở vị trí ngẫu nhiên
         private void GenerateFood()
         {
-            Random rand = new Random();
-            int x = rand.Next(0, gamePanel.Width / cellSize);
-            int y = rand.Next(0, gamePanel.Height / cellSize);
-            food = new Point(x, y);
+            Point newFood;
+            do
+            {
+                int x = rand.Next(0, gamePanel.Width / cellSize);
+                int y = rand.Next(0, gamePanel.Height / cellSize);
+                newFood = new Point(x, y);
+            } while (snake.Contains(newFood) || obstacles.Contains(newFood));
+
+            food = newFood;
         }
 
-        // Vòng lặp game (di chuyển rắn, kiểm tra va chạm, cập nhật UI)
+        private void GenerateObstacles(int level)
+        {
+            obstacles.Clear();
+            int obstacleCount = level; // Số lượng chướng ngại vật tăng theo cấp độ
+            for (int i = 0; i < obstacleCount; i++)
+            {
+                Point obstacle;
+                do
+                {
+                    int x = rand.Next(0, gamePanel.Width / cellSize);
+                    int y = rand.Next(0, gamePanel.Height / cellSize);
+                    obstacle = new Point(x, y);
+                } while (snake.Contains(obstacle) || obstacle == food || obstacles.Contains(obstacle));
+
+                obstacles.Add(obstacle);
+            }
+        }
+
+        private void ToggleFlash(object sender, EventArgs e)
+        {
+            isDarkMode = !isDarkMode;
+            gamePanel.BackColor = isDarkMode ? Color.Black : Color.White;
+            UpdateLabels(); 
+        }
+
         private void GameLoop(object sender, EventArgs e)
         {
             MoveSnake();
             CheckCollision();
-            gamePanel.Invalidate(); // Vẽ lại panel
+            gamePanel.Invalidate();
         }
 
-        // Di chuyển rắn
+        private void Countdown(object sender, EventArgs e)
+        {
+            timeRemaining--;
+            UpdateLabels();
+            if (timeRemaining <= 0)
+            {
+                GameOver();
+            }
+        }
+
         private void MoveSnake()
         {
-            Point head = snake[0]; // Lấy đầu rắn
-
-            // Tính vị trí mới cho đầu rắn
+            Point head = snake[0];
             Point newHead = head;
-            if (direction == "up")
-                newHead.Y--;
-            else if (direction == "down")
-                newHead.Y++;
-            else if (direction == "left")
-                newHead.X--;
-            else if (direction == "right")
-                newHead.X++;
 
-            // Thêm vị trí mới vào đầu danh sách rắn
+            if (direction == "up") newHead.Y--;
+            else if (direction == "down") newHead.Y++;
+            else if (direction == "left") newHead.X--;
+            else if (direction == "right") newHead.X++;
+
             snake.Insert(0, newHead);
 
-            // Kiểm tra xem rắn có ăn mồi không
             if (newHead == food)
             {
-                score++;
-                scoreLabel.Text = $"Score: {score}";
+                score+=5;
+                timeRemaining += 5;
+                eatSound.controls.play();
                 GenerateFood();
+
+                if (score % 5 == 0)
+                {
+                    level++;
+                    gameTimer.Interval = Math.Max(20, gameTimer.Interval - 10);
+                    GenerateObstacles(level);
+
+                    // Bật hiệu ứng nhấp nháy cho cấp độ 3
+                    if (level == 3)
+                    {
+                        flashTimer.Start();
+                    }
+                    else
+                    {
+                        flashTimer.Stop();
+                        gamePanel.BackColor = Color.White; // Đặt lại nền cho các cấp độ thấp hơn
+                    }
+                }
             }
             else
             {
-                // Nếu không ăn mồi thì xóa phần cuối (đuôi) của rắn để giữ nguyên độ dài
                 snake.RemoveAt(snake.Count - 1);
             }
+
+            UpdateLabels();
         }
 
-        // Kiểm tra va chạm
+        private void UpdateLabels()
+        {
+            scoreLabel.Text = $"Điểm: {score}";
+            levelLabel.Text = $"Cấp độ: {level}";
+            timeLabel.Text = $"Thời gian còn lại: {timeRemaining}s";
+            scoreLabel.ForeColor = isDarkMode ? Color.Red : Color.Black;
+            levelLabel.ForeColor = isDarkMode ? Color.Red : Color.Black;
+            timeLabel.ForeColor = isDarkMode ? Color.Red : Color.Black;
+        }
+
         private void CheckCollision()
         {
             Point head = snake[0];
 
-            // Va chạm với tường
+            // Kiểm tra va chạm với tường
             if (head.X < 0 || head.Y < 0 || head.X >= gamePanel.Width / cellSize || head.Y >= gamePanel.Height / cellSize)
             {
                 GameOver();
             }
 
-            // Va chạm với chính mình
+            // Kiểm tra va chạm với thân rắn
             for (int i = 1; i < snake.Count; i++)
             {
                 if (head == snake[i])
@@ -111,32 +203,38 @@ namespace SnakeGame
                     GameOver();
                 }
             }
+
+            // Kiểm tra va chạm với chướng ngại vật
+            foreach (var obstacle in obstacles)
+            {
+                if (head == obstacle)
+                {
+                    GameOver();
+                }
+            }
         }
 
-        // Kết thúc game
-        // Kết thúc game
         private void GameOver()
         {
             gameTimer.Stop();
+            countdownTimer.Stop();
+            flashTimer.Stop(); // Dừng nhấp nháy khi kết thúc trò chơi
 
-            // Hiển thị hộp thoại với nút "Thoát"
-            DialogResult result = MessageBox.Show($"Game Over! Final Score: {score}\nBạn có muốn thoát trò chơi?",
+            DialogResult result = MessageBox.Show($"Trò chơi kết thúc! Điểm cuối: {score}\nBạn có muốn thoát trò chơi?",
                                                     "Kết thúc trò chơi",
                                                     MessageBoxButtons.YesNo,
                                                     MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
             {
-                this.Close(); // Đóng cửa sổ và thoát trò chơi
+                this.Close();
             }
             else
             {
-                StartGame(); // Bắt đầu lại game nếu không muốn thoát
+                StartGame();
             }
         }
 
-
-        // Bắt sự kiện bàn phím để điều khiển rắn
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up && direction != "down")
@@ -149,39 +247,45 @@ namespace SnakeGame
                 direction = "right";
         }
 
-        // Vẽ rắn và mồi lên panel
+        private Image RotateImage(Image img, float angle)
+        {
+            Bitmap bmp = new Bitmap(cellSize, cellSize);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.TranslateTransform(bmp.Width / 2, bmp.Height / 2);
+                g.RotateTransform(angle);
+                g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
+                g.DrawImage(img, new Rectangle(0, 0, cellSize, cellSize));
+            }
+            return bmp;
+        }
+
         private void gamePanel_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
-            foreach (Point part in snake)
+            // Vẽ đầu rắn với hình ảnh xoay dựa trên hướng di chuyển
+            float angle = direction == "up" ? 0 : direction == "right" ? 90 : direction == "down" ? 180 : 270;
+            Rectangle headRect = new Rectangle(snake[0].X * cellSize, snake[0].Y * cellSize, cellSize, cellSize);
+            g.DrawImage(RotateImage(snakeHeadImage, angle), headRect);
+
+            // Vẽ các phần thân của rắn
+            for (int i = 1; i < snake.Count; i++)
             {
-                // Tạo hình tròn cho mỗi phần của rắn
-                Rectangle rect = new Rectangle(part.X * cellSize, part.Y * cellSize, cellSize, cellSize);
-
-                // Vẽ hình tròn cho thân rắn
-                using (SolidBrush brush = new SolidBrush(Color.Green))
-                {
-                    g.FillEllipse(brush, rect);
-                }
-
-                // Viền rắn
-                g.DrawEllipse(new Pen(Color.DarkGreen, 2), rect);
+                Rectangle rect = new Rectangle(snake[i].X * cellSize, snake[i].Y * cellSize, cellSize, cellSize);
+                g.FillEllipse(Brushes.Green, rect);
             }
 
-            // Vẽ mồi (giữ nguyên như cũ)
+            // Vẽ thức ăn
             Rectangle foodRect = new Rectangle(food.X * cellSize, food.Y * cellSize, cellSize, cellSize);
-            using (SolidBrush foodBrush = new SolidBrush(Color.Red))
+            g.DrawImage(foodImage, foodRect);
+
+            // Vẽ các chướng ngại vật
+            foreach (var obstacle in obstacles)
             {
-                g.FillEllipse(foodBrush, foodRect);
+                Rectangle obstacleRect = new Rectangle(obstacle.X * cellSize, obstacle.Y * cellSize, cellSize, cellSize);
+                g.DrawImage(obstacleImage, obstacleRect);
             }
-            g.DrawEllipse(new Pen(Color.DarkRed, 2), foodRect); // Viền mồi
-        }
-
-
-        private void game_Load(object sender, EventArgs e)
-        {
-            // Mã khởi tạo khi form load (có thể để trống nếu chưa cần thực hiện gì)
         }
     }
 }

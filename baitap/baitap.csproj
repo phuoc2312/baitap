@@ -320,5 +320,37 @@
   <ItemGroup>
     <None Include="Resources\logo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\over.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\an.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lum.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ran2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ran.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,12 +3,23 @@
   "WorkspaceRootPath": "D:\\C##\\maihuuphuoc_2122110106\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|d:\\c##\\maihuuphuoc_2122110106\\baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\gamebaucua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\gamebaucua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\game.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|baitap||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\resources\\moi.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\resources\\moi.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{ADCC5806-BD24-49FA-BD5C-EB812B84D94E}|baitap\\baitap.csproj|solutionrelative:baitap\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +29,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 243,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,16 +41,37 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "moi.png",
+              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\moi.png",
+              "RelativeDocumentMoniker": "baitap\\Resources\\moi.png",
+              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Resources\\moi.png",
+              "RelativeToolTip": "baitap\\Resources\\moi.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-11-02T03:44:35.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "baitap",
+              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\baitap.csproj",
+              "RelativeDocumentMoniker": "baitap\\baitap.csproj",
+              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\baitap.csproj",
+              "RelativeToolTip": "baitap\\baitap.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-11-01T18:36:57.253Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Gamebaucua.cs",
-              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Gamebaucua.cs",
-              "RelativeDocumentMoniker": "baitap\\Gamebaucua.cs",
-              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\Gamebaucua.cs",
-              "RelativeToolTip": "baitap\\Gamebaucua.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "game.Designer.cs",
+              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.Designer.cs",
+              "RelativeDocumentMoniker": "baitap\\game.Designer.cs",
+              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.Designer.cs",
+              "RelativeToolTip": "baitap\\game.Designer.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAQwF4AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T05:38:05.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T18:02:15.766Z"
             },
             {
               "$type": "Document",
@@ -49,10 +81,21 @@
               "RelativeDocumentMoniker": "baitap\\game.cs",
               "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs",
               "RelativeToolTip": "baitap\\game.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwJQAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABkBAAAAAAAAAAAAAJQAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T17:11:57.087Z",
+              "WhenOpened": "2024-10-26T06:05:54.25Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "game.cs [Design]",
+              "DocumentMoniker": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs",
+              "RelativeDocumentMoniker": "baitap\\game.cs",
+              "ToolTip": "D:\\C##\\maihuuphuoc_2122110106\\baitap\\game.cs [Design]",
+              "RelativeToolTip": "baitap\\game.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-26T06:05:49.294Z"
             }
           ]
         }
